@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateSentencesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create('sentences', function (Blueprint $table) {
+            $table->id();
+            $table->integer('prisonerNO')->unique();
+            $table->integer('cellNO');
+            $table->date('startDate');
+            $table->date('endDate');
+            $table->string('description')->nullable(); 
+            
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('sentences');
+    }
+};
